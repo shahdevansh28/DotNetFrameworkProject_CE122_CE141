@@ -23,6 +23,10 @@ namespace HR_Management_System
             if (Session["userName"] == null){
                 Response.Redirect("Login.aspx", false);
             }
+            mesPanelViewemp.Visible = false;
+            //if (IsPostBack) { 
+            //    mesPanelViewemp.Visible = true;
+            //}
         }
 
         protected void updateEmpClick(object sender, EventArgs e)
@@ -37,7 +41,6 @@ namespace HR_Management_System
             Button btn = (Button)sender;
             string empId = btn.CommandArgument.ToString();
             int id = int.Parse(empId);
-            Response.Write(empId);
 
             string conStr = WebConfigurationManager.ConnectionStrings["employeeConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(conStr);
@@ -84,19 +87,28 @@ namespace HR_Management_System
             }
             catch (Exception ex)
             {
-                //mesPanelAddemp.Visible = true;
-                Response.Write("Error1 : " + ex.Message);
+                lbErrorViewemp.Text = "Error" + ex.Message;
+                mesPanelViewemp.Visible = true;
+                //Response.Write("Error1 : " + ex.Message);
             }
 
             if (flag)
             {
-                Response.Redirect("ViewAllEmployee.aspx",false);
+                //Response.Redirect("ViewAllEmployee.aspx",false);
+                lbErrorViewemp.Text = "Deleted succesfully..";
+                mesPanelViewemp.Visible = true;
             }
             else
             {
-                Response.Write("Something went wrong....");
+                lbErrorViewemp.Text = "Something went wrong..";
+                mesPanelViewemp.Visible = true;
             }
             
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminHome.aspx", false);
         }
     }
 }

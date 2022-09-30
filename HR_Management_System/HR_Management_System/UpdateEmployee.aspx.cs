@@ -23,6 +23,8 @@ namespace HR_Management_System
                 Response.Redirect("Login.aspx", false);
             }
             else {
+                editEmpPanel.Visible = true;
+                mesPanelUpdateemp.Visible = false;
                 //String s = Request.QueryString["emp_id"];
                 String s = Request.QueryString["empId"];
                 //String s = Page.Request.Form["empId"];
@@ -136,8 +138,8 @@ namespace HR_Management_System
                                     flag = false;
                                     //editEmpPanel.Visible = true;
                                     //viewEmpPanel.Visible = false;
-                                    //lbErrorAddemp.Text = "Email id is already taken,Please take another one.";
-                                    //mesPanelAddemp.Visible = true;
+                                    //lbErrorUpdateemp.Text = "Email id is already taken,Please take another one.";
+                                    //mesPanelUpdateemp.Visible = true;
                                     Response.Write("Email id is already taken,Please take another one.");
                                     break;
                                 }
@@ -147,8 +149,8 @@ namespace HR_Management_System
                                 flag = false;
                                 //editEmpPanel.Visible = true;
                                 //viewEmpPanel.Visible = false;
-                                //lbErrorAddemp.Text = "User name is already taken...Please take another one.";
-                                //mesPanelAddemp.Visible = true;
+                                //lbErrorUpdateemp.Text = "User name is already taken...Please take another one.";
+                                //mesPanelUpdateemp.Visible = true;
                                 Response.Write("User name is already taken...Please take another one.");
                                 break;
                             }
@@ -182,23 +184,25 @@ namespace HR_Management_System
                             dr2[0]["salary_amount"] = Page.Request.Form["salaryAmountEF"];
                             dr2[0]["salary_desc"] = Page.Request.Form["salaryDescEF"];
                             da2.Update(ds,"Salary");
-                            Response.Redirect("ViewAllEmployee.aspx", false);
-                            //lbErrorAddemp.Text = "Update is done succeessfully";
-                            //mesPanelAddemp.Visible = true;
-                            //editEmpPanel.Visible = false;
-                            //viewEmpPanel.Visible = true;
+                            lbErrorUpdateemp.Text = "Update is done succeessfully";
+                            mesPanelUpdateemp.Visible = true;
+                            editEmpPanel.Visible = false;
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                //editEmpPanel.Visible = true;
-                //viewEmpPanel.Visible = false;
-                //lbErrorAddemp.Text = "Error" + ex.Message;
-                //mesPanelAddemp.Visible = true;
+                editEmpPanel.Visible = true;
+                lbErrorUpdateemp.Text = "Error" + ex.Message;
+                mesPanelUpdateemp.Visible = true;
                 Response.Write("Error1 : " + ex.Message);
             }
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewAllEmployee.aspx",false);
         }
     }
 }

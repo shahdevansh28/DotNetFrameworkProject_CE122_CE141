@@ -12,6 +12,12 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Panel ID="mesPanelUpdateemp" runat="server">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <asp:Label ID="lbErrorUpdateemp" runat="server"></asp:Label>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </asp:Panel>
             <asp:Panel ID="editEmpPanel" runat="server">
                 <div class="container mt-5 mb-5">
                     <asp:Label class="form-label" ID="lbEmpUName" runat="server" associatedcontrolid="empUNameEF" Text="Employee User Name : "></asp:Label>
@@ -57,6 +63,13 @@
                     </div>
                 </div>
             </asp:Panel>
+
+            <div class="row">
+                <div class="col-5"></div>
+                <asp:Button class="btn btn-primary col-2" ID="btnBack" runat="server" Text="Back" autopostback="false" OnClick="btnBack_Click" />
+                <div class="col-5"></div>
+            </div>
+
         </div>
     </form>
 </body>

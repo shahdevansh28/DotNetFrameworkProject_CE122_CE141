@@ -18,6 +18,7 @@ namespace HR_Management_System
         protected void Page_Load(object sender, EventArgs e)
         {
             mesPanelAddemp.Visible = false;
+            addEmpPanel.Visible = true;
             if (Session["userName"] == null)
             {
                 Response.Redirect("Login.aspx", false);
@@ -54,48 +55,6 @@ namespace HR_Management_System
 
             }
 
-            //if (IsPostBack) {
-            //    string conStr = WebConfigurationManager.ConnectionStrings["employeeConnection"].ConnectionString;
-            //    SqlConnection con = new SqlConnection(conStr);
-
-            //    SqlCommand cmd = new SqlCommand();
-            //    cmd.Connection = con;
-            //    cmd.CommandText = "Select * from Employee where emp_id = (select MAX(emp_id) from Employee)";
-            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            //    SqlCommand cmd2 = new SqlCommand("Select * from Salary", con);
-            //    SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
-            //    SqlCommandBuilder builder2 = new SqlCommandBuilder(da2);
-
-            //    try {
-            //        using (con)
-            //        {
-            //            con.Open();
-            //            da.Fill(ds, "Employee");
-            //            da2.Fill(ds, "Salary");
-            //            con.Close();
-
-            //            DataTable dt2 = ds.Tables["Salary"];
-            //            DataRow dr2 = dt2.NewRow();
-
-            //            DataTable dt = ds.Tables["Employee"];
-            //            DataRow[] dr1 = dt.Select();
-            //            if (dr1.Length == 1)
-            //            {
-            //                dr2["salary_amount"] = Page.Request.Form["salaryAmount"];
-            //                dr2["salary_desc"] = Page.Request.Form["salaryDesc"];
-            //                dr2["salary_emp_id"] = dr1[0]["emp_id"];
-            //                dt2.Rows.Add(dr2);
-            //                da2.Update(ds, "Salary");
-            //            }
-            //        }
-            //        Response.Redirect("AddEmployee.aspx",false);
-            //    }
-            //    catch (Exception ex) {
-            //        lbErrorAddemp.Text = "Error" + ex.Message;
-            //        mesPanelAddemp.Visible = true;
-            //    }
-            //}
         }
 
         protected void btnAddEmp_Click(object sender, EventArgs e)
@@ -153,9 +112,6 @@ namespace HR_Management_System
                         DataTable dt = ds.Tables["Employee"];
                         DataRow dr = dt.NewRow();
 
-                        
-
-                        
                         dr["emp_username"] = uname;
                         dr["emp_email"] = Page.Request.Form["empEmail"];
                         dr["emp_password"] = Page.Request.Form["empPassword"];
@@ -169,6 +125,8 @@ namespace HR_Management_System
                         dr["isAdmin"] = 0;
                         dt.Rows.Add(dr);
                         da.Update(ds, "Employee");
+                        
+                        //Response.Redirect("");
                     }
                 }
                 
@@ -180,52 +138,67 @@ namespace HR_Management_System
                 //Response.Write("Error1 : " + ex.Message);
             }
 
-
+            updateSalary();
         }
 
-        //protected void updateSalary(string uname) {
-        //    string conStr = WebConfigurationManager.ConnectionStrings["employeeConnection"].ConnectionString;
-        //    SqlConnection con = new SqlConnection(conStr);
+        protected void updateSalary()
+        {
+            string conStr = WebConfigurationManager.ConnectionStrings["employeeConnection"].ConnectionString;
+            SqlConnection con = new SqlConnection(conStr);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "select IDENT_CURRENT('Employee') as empId";
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-        //    SqlCommand cmd = new SqlCommand();
-        //    cmd.Connection = con;
-        //    cmd.CommandText = "Select * from Employee";
-        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+            con = new SqlConnection(conStr);
+            SqlCommand cmd2 = new SqlCommand("Select * from Salary", con);
+            SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
+            SqlCommandBuilder builder2 = new SqlCommandBuilder(da2);
 
-        //    SqlCommand cmd2 = new SqlCommand("Select * from Salary", con);
-        //    SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
-        //    SqlCommandBuilder builder2 = new SqlCommandBuilder(da2);
+            int lastId = 0;
+            try
+            {
+                using (con)
+                {
+                    con.Open();
+                    da.Fill(ds, "LastEmployee");
+                    da2.Fill(ds,"Salary");
+                    con.Close();
 
-        //    try {
-        //        using (con)
-        //        {
-        //            con.Open();
-        //            da.Fill(ds, "Employee");
-        //            da2.Fill(ds, "Salary");
-        //            con.Close();
+                    DataTable dt = ds.Tables["LastEmployee"];
+                    DataRow[] dr = dt.Select();
 
-        //            DataTable dt2 = ds.Tables["Salary"];
-        //            DataRow dr2 = dt2.NewRow();
+                    if (dr.Length == 1)
+                    {
+                        //Response.Write(dr[0]["empId"]);
+                        lastId = int.Parse(dr[0]["empId"].ToString());
+                    }
 
-        //            DataTable dt = ds.Tables["Employee"];
-        //            string expression = $"emp_username = '{uname}'";
-        //            DataRow[] dr1 = dt.Select(expression);
-        //            if (dr1.Length == 1)
-        //            {
-        //                dr2["salary_amount"] = Page.Request.Form["salaryAmount"];
-        //                dr2["salary_desc"] = Page.Request.Form["salaryDesc"];
-        //                dr2["salary_emp_id"] = dr1[0]["emp_id"];
-        //                dt2.Rows.Add(dr2);
-        //                da2.Update(ds, "Salary");
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex) {
-        //        lbErrorAddemp.Text = "Error" + ex.Message;
-        //        mesPanelAddemp.Visible = true;
-        //    }
-            
-        //}
+                    DataTable dt2 = ds.Tables["Salary"];
+                    DataRow dr2 = dt2.NewRow();
+                    dr2["salary_amount"] = Page.Request.Form["salaryAmount"];
+                    dr2["salary_desc"] = Page.Request.Form["salaryDesc"];
+                    dr2["salary_emp_id"] = lastId;
+                    dt2.Rows.Add(dr2);
+                    da2.Update(ds,"Salary");
 
+                    lbErrorAddemp.Text = "Employee added succeessfully";
+                    mesPanelAddemp.Visible = true;
+                    addEmpPanel.Visible = false;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                lbErrorAddemp.Text = "Error" + ex.Message;
+                mesPanelAddemp.Visible = true;
+            }
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminHome.aspx", false);
+        }
+        
     }
 }

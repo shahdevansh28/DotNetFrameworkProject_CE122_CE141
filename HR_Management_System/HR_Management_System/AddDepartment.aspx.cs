@@ -16,7 +16,8 @@ namespace HR_Management_System
         DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
-            mesPanelAddemp.Visible = false;
+            mesPanelAddDep.Visible = false;
+            addDepPanel.Visible = true;
             if (Session["userName"] == null)
             {
                 Response.Redirect("Login.aspx", false);
@@ -52,8 +53,8 @@ namespace HR_Management_System
                         else
                         {
                             flag = false;
-                            lbErrorAddemp.Text = "Department name is already taken.";
-                            mesPanelAddemp.Visible = true;
+                            lbErrorAddDep.Text = "Department name is already taken.";
+                            mesPanelAddDep.Visible = true;
                             break;
                         }
                     }
@@ -66,16 +67,25 @@ namespace HR_Management_System
                         dr["department_des"] = Page.Request.Form["depDesc"];
                         dt.Rows.Add(dr);
                         da.Update(ds, "Department");
+                        lbErrorAddDep.Text = "Department added succeessfully";
+                        mesPanelAddDep.Visible = true;
+                        addDepPanel.Visible = false;
                     }
                 }
             }
             catch (Exception ex)
             {
-                lbErrorAddemp.Text = "Error" + ex.Message;
-                mesPanelAddemp.Visible = true;
+                lbErrorAddDep.Text = "Error" + ex.Message;
+                mesPanelAddDep.Visible = true;
                 //Response.Write("Error1 : " + ex.Message);
             }
 
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminHome.aspx", false);
+        }
+
     }
 }

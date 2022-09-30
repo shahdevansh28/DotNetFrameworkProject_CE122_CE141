@@ -17,5 +17,10 @@ namespace HR_Management_System
             }
         }
 
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminHome.aspx", false);
+        }
+
     }
 }
