@@ -31,6 +31,9 @@
                             <asp:HyperLink ID="HyperLink2" class="nav-link active" runat="server" NavigateUrl="~/ViewAllEmployee.aspx">View All Employee </asp:HyperLink>
                         </li>
                         <li class="nav-item">
+                            <asp:HyperLink ID="HyperLink8" class="nav-link active" runat="server" NavigateUrl="~/viewListAdmin.aspx">View/Grant Leave</asp:HyperLink>
+                        </li>
+                        <li class="nav-item">
                             <asp:HyperLink ID="HyperLink3" class="nav-link active" runat="server" NavigateUrl="~/AddDepartment.aspx">Add Department</asp:HyperLink>
                         </li>
                         <li class="nav-item">
@@ -42,9 +45,6 @@
                         <li class="nav-item">
                             <asp:HyperLink ID="HyperLink6" class="nav-link active" runat="server" NavigateUrl="~/logout.aspx">Logout</asp:HyperLink>
                         </li>
-                        <%--<li class="nav-item">
-                            <asp:LinkButton ID="LinkButton1" class="nav-link active" runat="server" OnClick="logout_Click">Logout</asp:LinkButton>
-                        </li>--%>
                     </ul>
                     <ul class="navbar-nav me-2 mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -89,7 +89,6 @@
             </div>
 
             <div class="row mt-5">
-                <div class="col-2"></div>
                 <div class="col-4">
                     <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                       <div class="card-header text-light" style="background-color: rebeccapurple!important;">View All Department</div>
@@ -108,7 +107,15 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-2"></div>
+                <div class="col-4">
+                    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                      <div class="card-header text-light" style="background-color: rebeccapurple!important;">Grant/View Leave</div>
+                      <div class="card-body">
+                        <p class="card-text">Grant/View leave is one feature that is used by admin to view or grant leave of an employee.</p>
+                        <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/viewListAdmin.aspx">View All Departments</asp:HyperLink>
+                      </div>
+                    </div>
+                </div>
             </div>
 
             <%--<div class="card-group justify-content-between">

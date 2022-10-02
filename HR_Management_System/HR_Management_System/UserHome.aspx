@@ -26,6 +26,12 @@
                                 <asp:HyperLink ID="HyperLink7" class="nav-link active" runat="server" NavigateUrl="~/UserHome.aspx">Home</asp:HyperLink>
                             </li>
                             <li class="nav-item">
+                                <asp:HyperLink ID="HyperLink1" class="nav-link active" runat="server" NavigateUrl="~/LeaveForm.aspx">Apply For Leave</asp:HyperLink>
+                            </li>
+                            <li class="nav-item">
+                                <asp:HyperLink ID="HyperLink2" class="nav-link active" runat="server" NavigateUrl="~/viewLeave.aspx">View Leave List</asp:HyperLink>
+                            </li>
+                            <li class="nav-item">
                                 <asp:HyperLink ID="HyperLink12" class="nav-link active" runat="server" NavigateUrl="~/ViewProfile.aspx">My Profile</asp:HyperLink>
                             </li>
                             <li class="nav-item">

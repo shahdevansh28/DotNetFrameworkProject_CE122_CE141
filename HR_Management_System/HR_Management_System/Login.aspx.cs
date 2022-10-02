@@ -47,6 +47,7 @@ namespace HR_Management_System
             foreach (DataRow row in ds.Tables["Employee"].Rows) {
                 if ( (( (string)row["emp_username"]) == name) && (((string)row["emp_password"]) == pass) ) {
                     success = true;
+                    Session["user_id"] = row["emp_id"];
                     if ( (int)(row["isAdmin"]) == 1 ) {
                         isAdmin = true;
                     }
