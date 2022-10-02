@@ -16,7 +16,8 @@ namespace HR_Management_System
         DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
-            mesPanelAddDep.Visible = false;
+            mesPanelAddDepErr.Visible = false;
+            mesPanelAddDepSucc.Visible = false;
             addDepPanel.Visible = true;
             if (Session["userName"] == null)
             {
@@ -54,7 +55,7 @@ namespace HR_Management_System
                         {
                             flag = false;
                             lbErrorAddDep.Text = "Department name is already taken.";
-                            mesPanelAddDep.Visible = true;
+                            mesPanelAddDepErr.Visible = true;
                             break;
                         }
                     }
@@ -67,8 +68,8 @@ namespace HR_Management_System
                         dr["department_des"] = Page.Request.Form["depDesc"];
                         dt.Rows.Add(dr);
                         da.Update(ds, "Department");
-                        lbErrorAddDep.Text = "Department added succeessfully";
-                        mesPanelAddDep.Visible = true;
+                        lbSuccAddDep.Text = "Department added succeessfully";
+                        mesPanelAddDepSucc.Visible = true;
                         addDepPanel.Visible = false;
                     }
                 }
@@ -76,7 +77,7 @@ namespace HR_Management_System
             catch (Exception ex)
             {
                 lbErrorAddDep.Text = "Error" + ex.Message;
-                mesPanelAddDep.Visible = true;
+                mesPanelAddDepErr.Visible = true;
                 //Response.Write("Error1 : " + ex.Message);
             }
 

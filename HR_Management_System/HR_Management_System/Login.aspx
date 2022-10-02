@@ -10,7 +10,7 @@
     <title>Login Page</title>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5 w-25">
         
         <form id="form1" class="align-items-center" runat="server">
             <asp:Panel ID="mesPanel" runat="server">
@@ -20,14 +20,14 @@
                 </div>
             </asp:Panel>
             <br />
-            <asp:Label class="form-label" ID="lbUname" runat="server" associatedcontrolid="uName" Text="User Name : "></asp:Label>
+            <asp:Label class="form-label" ID="lbUname" runat="server" associatedcontrolid="uName" Text="User Name"></asp:Label>
             <input class="form-control" id="uName" type="text" runat="server" maxlength="50" required="required" /><br />
-            <asp:Label class="form-label" ID="lbUpassword" runat="server" associatedcontrolid="uPassword" Text="Password : "></asp:Label>
-            <input class="form-control" id="uPassword" type="password" runat="server" maxlength="10" required="required" /><br />
+            <asp:Label class="form-label" ID="lbUpassword" runat="server" associatedcontrolid="uPassword" Text="Password"></asp:Label>
+            <input class="form-control" id="uPassword" type="password" runat="server" minlength="6" maxlength="10" required="required" /><br />
             <div class="row">
-                <div class="col-5"></div>
-                <asp:Button class="btn btn-primary col-2" ID="loginBtn" runat="server" OnClick="loginBtn_Click" Text="Log in" />
-                <div class="col-5"></div>
+                <div class="col-4"></div>
+                <asp:Button class="btn btn-primary col-4" ID="loginBtn" runat="server" OnClick="loginBtn_Click" Text="Log in" />
+                <div class="col-4"></div>
             </div>
             <br />
         </form>

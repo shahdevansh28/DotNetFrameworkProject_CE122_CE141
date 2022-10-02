@@ -58,8 +58,10 @@ namespace HR_Management_System
                 Session["userName"] = name;
 
                 if (isAdmin) { 
+                    Session["isAdmin"] = 1;
                     Response.Redirect("AdminHome.aspx",false);
                 }else { 
+                    Session["isAdmin"] = 0;
                     Response.Redirect("UserHome.aspx",false);
                 }
 

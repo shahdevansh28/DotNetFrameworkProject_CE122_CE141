@@ -24,10 +24,9 @@ namespace HR_Management_System
             }
             else {
                 editEmpPanel.Visible = true;
-                mesPanelUpdateemp.Visible = false;
-                //String s = Request.QueryString["emp_id"];
+                mesPanelUpdateempErr.Visible = false;
+                mesPanelUpdateempSucc.Visible = false;
                 String s = Request.QueryString["empId"];
-                //String s = Page.Request.Form["empId"];
                 id = s;
                 string conStr = WebConfigurationManager.ConnectionStrings["employeeConnection"].ConnectionString;
                 SqlConnection con = new SqlConnection(conStr);
@@ -138,9 +137,9 @@ namespace HR_Management_System
                                     flag = false;
                                     //editEmpPanel.Visible = true;
                                     //viewEmpPanel.Visible = false;
-                                    //lbErrorUpdateemp.Text = "Email id is already taken,Please take another one.";
-                                    //mesPanelUpdateemp.Visible = true;
-                                    Response.Write("Email id is already taken,Please take another one.");
+                                    lbErrorUpdateemp.Text = "Email id is already taken,Please take another one.";
+                                    mesPanelUpdateempErr.Visible = true;
+                                    //Response.Write("Email id is already taken,Please take another one.");
                                     break;
                                 }
                             }
@@ -149,9 +148,9 @@ namespace HR_Management_System
                                 flag = false;
                                 //editEmpPanel.Visible = true;
                                 //viewEmpPanel.Visible = false;
-                                //lbErrorUpdateemp.Text = "User name is already taken...Please take another one.";
-                                //mesPanelUpdateemp.Visible = true;
-                                Response.Write("User name is already taken...Please take another one.");
+                                lbErrorUpdateemp.Text = "User name is already taken...Please take another one.";
+                                mesPanelUpdateempErr.Visible = true;
+                                //Response.Write("User name is already taken...Please take another one.");
                                 break;
                             }
                         }
@@ -184,8 +183,8 @@ namespace HR_Management_System
                             dr2[0]["salary_amount"] = Page.Request.Form["salaryAmountEF"];
                             dr2[0]["salary_desc"] = Page.Request.Form["salaryDescEF"];
                             da2.Update(ds,"Salary");
-                            lbErrorUpdateemp.Text = "Update is done succeessfully";
-                            mesPanelUpdateemp.Visible = true;
+                            lbSuccUpdateemp.Text = "Update is done succeessfully";
+                            mesPanelUpdateempSucc.Visible = true;
                             editEmpPanel.Visible = false;
                         }
                     }
@@ -195,7 +194,7 @@ namespace HR_Management_System
             {
                 editEmpPanel.Visible = true;
                 lbErrorUpdateemp.Text = "Error" + ex.Message;
-                mesPanelUpdateemp.Visible = true;
+                mesPanelUpdateempErr.Visible = true;
                 Response.Write("Error1 : " + ex.Message);
             }
         }

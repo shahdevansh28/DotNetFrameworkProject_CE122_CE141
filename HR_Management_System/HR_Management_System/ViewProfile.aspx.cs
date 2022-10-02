@@ -19,11 +19,12 @@ namespace HR_Management_System
         {
             if (Session["userName"] == null) {
                 Response.Redirect("Login.aspx", false);
-            } 
+            }
             else {
                 viewEmpPanel.Visible = true;
                 editEmpPanel.Visible = false;
-                mesPanelAddemp.Visible = false;
+                mesPanelViewProfileErr.Visible = false;
+                mesPanelViewProfileSucc.Visible = false;
                 string conStr = WebConfigurationManager.ConnectionStrings["employeeConnection"].ConnectionString;
                 SqlConnection con = new SqlConnection(conStr);
                 string query = "Select * from Department inner join Employee on Department.department_id = Employee.emp_department_id inner join Salary on salary.salary_emp_id = Employee.emp_id where emp_username = @userName";
@@ -116,8 +117,8 @@ namespace HR_Management_System
                                     flag = false;
                                     editEmpPanel.Visible = true;
                                     viewEmpPanel.Visible = false;
-                                    lbErrorAddemp.Text = "Email id is already taken,Please take another one.";
-                                    mesPanelAddemp.Visible = true;
+                                    lbErrorViewProfile.Text = "Email id is already taken,Please take another one.";
+                                    mesPanelViewProfileErr.Visible = true;
                                     //Response.Write("Email id is already taken,Please take another one.");
                                     break;
                                 }
@@ -127,8 +128,8 @@ namespace HR_Management_System
                                 flag = false;
                                 editEmpPanel.Visible = true;
                                 viewEmpPanel.Visible = false;
-                                lbErrorAddemp.Text = "User name is already taken...Please take another one.";
-                                mesPanelAddemp.Visible = true;
+                                lbErrorViewProfile.Text = "User name is already taken...Please take another one.";
+                                mesPanelViewProfileErr.Visible = true;
                                 //Response.Write("User name is already taken...Please take another one.");
                                 break;
                             }
@@ -153,8 +154,8 @@ namespace HR_Management_System
                             dr[0]["emp_address"] = Page.Request.Form["empAddressEF"];
                             dr[0]["emp_join_date"] = DateTime.Parse(Page.Request.Form["empJoinDateEF"]);
                             da.Update(ds, "Employee");
-                            lbErrorAddemp.Text = "Update is done succeessfully";
-                            mesPanelAddemp.Visible = true;
+                            lbSuccViewProfile.Text = "Update is done succeessfully";
+                            mesPanelViewProfileSucc.Visible = true;
                             editEmpPanel.Visible = false;
                             viewEmpPanel.Visible = true;
                         }
@@ -168,8 +169,8 @@ namespace HR_Management_System
             {
                 editEmpPanel.Visible = true;
                 viewEmpPanel.Visible = false;
-                lbErrorAddemp.Text = "Error" + ex.Message;
-                mesPanelAddemp.Visible = true;
+                lbErrorViewProfile.Text = "Error" + ex.Message;
+                mesPanelViewProfileErr.Visible = true;
                 //Response.Write("Error1 : " + ex.Message);
             }
         }

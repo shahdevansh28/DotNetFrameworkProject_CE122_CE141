@@ -17,7 +17,8 @@ namespace HR_Management_System
         DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
-            mesPanelAddemp.Visible = false;
+            mesPanelAddempErr.Visible = false;
+            mesPanelAddempSucc.Visible = false;
             addEmpPanel.Visible = true;
             if (Session["userName"] == null)
             {
@@ -44,7 +45,7 @@ namespace HR_Management_System
                 catch (Exception ex)
                 {
                     lbErrorAddemp.Text = "Error" + ex.Message;
-                    mesPanelAddemp.Visible = true;
+                    mesPanelAddempErr.Visible = true;
                     //Response.Write("Error : " + ex.Message);
                 }
 
@@ -85,14 +86,14 @@ namespace HR_Management_System
                     {
                         if ( ( ((string)row["emp_username"]) != Page.Request.Form["empUName"] ) )
                         {
-                            if ((((string)row["emp_email"]) != Page.Request.Form["empEmail"])) {
+                            if ((((string)row["emp_email"]) != Page.Request.Form["empEmailId"])) {
                                 continue;
                             }
                             else
                             {
                                 flag = false;
                                 lbErrorAddemp.Text = "Email id is already taken,Please take another one.";
-                                mesPanelAddemp.Visible = true;
+                                mesPanelAddempErr.Visible = true;
                                 //Response.Write("Email id is already taken,Please take another one.");
                                 break;
                             }
@@ -101,7 +102,7 @@ namespace HR_Management_System
                         {
                             flag = false;
                             lbErrorAddemp.Text = "User name is already taken...Please take another one.";
-                            mesPanelAddemp.Visible = true;
+                            mesPanelAddempErr.Visible = true;
                             //Response.Write("User name is already taken...Please take another one.");
                             break;
                         }
@@ -113,7 +114,7 @@ namespace HR_Management_System
                         DataRow dr = dt.NewRow();
 
                         dr["emp_username"] = uname;
-                        dr["emp_email"] = Page.Request.Form["empEmail"];
+                        dr["emp_email"] = Page.Request.Form["empEmailId"];
                         dr["emp_password"] = Page.Request.Form["empPassword"];
                         dr["emp_name"] = Page.Request.Form["empName"];
                         dr["emp_gender"] = Page.Request.Form["empGen"];
@@ -125,7 +126,7 @@ namespace HR_Management_System
                         dr["isAdmin"] = 0;
                         dt.Rows.Add(dr);
                         da.Update(ds, "Employee");
-                        
+                        updateSalary();
                         //Response.Redirect("");
                     }
                 }
@@ -134,11 +135,11 @@ namespace HR_Management_System
             catch (Exception ex)
             {
                 lbErrorAddemp.Text = "Error" + ex.Message;
-                mesPanelAddemp.Visible = true;
+                mesPanelAddempErr.Visible = true;
                 //Response.Write("Error1 : " + ex.Message);
             }
 
-            updateSalary();
+            
         }
 
         protected void updateSalary()
@@ -182,23 +183,19 @@ namespace HR_Management_System
                     dt2.Rows.Add(dr2);
                     da2.Update(ds,"Salary");
 
-                    lbErrorAddemp.Text = "Employee added succeessfully";
-                    mesPanelAddemp.Visible = true;
+                    lbSuccAddemp.Text = "Employee added succeessfully";
+                    mesPanelAddempSucc.Visible = true;
                     addEmpPanel.Visible = false;
 
                 }
             }
             catch (Exception ex)
             {
-                lbErrorAddemp.Text = "Error" + ex.Message;
-                mesPanelAddemp.Visible = true;
+                lbErrorAddemp.Text = "Error : " + ex.Message;
+                mesPanelAddempErr.Visible = true;
             }
         }
 
-        protected void btnBack_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminHome.aspx", false);
-        }
-        
+
     }
 }

@@ -24,13 +24,13 @@ namespace HR_Management_System
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// mesPanelUpdateemp control.
+        /// mesPanelUpdateempErr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel mesPanelUpdateemp;
+        protected global::System.Web.UI.WebControls.Panel mesPanelUpdateempErr;
 
         /// <summary>
         /// lbErrorUpdateemp control.
@@ -40,6 +40,24 @@ namespace HR_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbErrorUpdateemp;
+
+        /// <summary>
+        /// mesPanelUpdateempSucc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel mesPanelUpdateempSucc;
+
+        /// <summary>
+        /// lbSuccUpdateemp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbSuccUpdateemp;
 
         /// <summary>
         /// editEmpPanel control.
@@ -60,6 +78,15 @@ namespace HR_Management_System
         protected global::System.Web.UI.WebControls.Label lbEmpUName;
 
         /// <summary>
+        /// RequiredFieldValidatorUname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorUname;
+
+        /// <summary>
         /// empUNameEF control.
         /// </summary>
         /// <remarks>
@@ -76,6 +103,15 @@ namespace HR_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbEmpEmail;
+
+        /// <summary>
+        /// RequiredFieldValidatorEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorEmail;
 
         /// <summary>
         /// empEmailEF control.
@@ -96,6 +132,15 @@ namespace HR_Management_System
         protected global::System.Web.UI.WebControls.Label lbEmpName;
 
         /// <summary>
+        /// RequiredFieldValidatorName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorName;
+
+        /// <summary>
         /// empNameEF control.
         /// </summary>
         /// <remarks>
@@ -112,6 +157,15 @@ namespace HR_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbEmpGen;
+
+        /// <summary>
+        /// RequiredFieldValidatorGen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorGen;
 
         /// <summary>
         /// empGen control.
@@ -132,6 +186,15 @@ namespace HR_Management_System
         protected global::System.Web.UI.WebControls.Label lbEmpDOB;
 
         /// <summary>
+        /// RequiredFieldValidatorDOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorDOB;
+
+        /// <summary>
         /// empDOBEF control.
         /// </summary>
         /// <remarks>
@@ -148,6 +211,24 @@ namespace HR_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbEmpMobile;
+
+        /// <summary>
+        /// RequiredFieldValidatorMobile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorMobile;
+
+        /// <summary>
+        /// RegularExpressionValidatorMobile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorMobile;
 
         /// <summary>
         /// empMobileEF control.
@@ -168,6 +249,15 @@ namespace HR_Management_System
         protected global::System.Web.UI.WebControls.Label lbEmpAddress;
 
         /// <summary>
+        /// RequiredFieldValidatorAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorAddress;
+
+        /// <summary>
         /// empAddressEF control.
         /// </summary>
         /// <remarks>
@@ -184,6 +274,15 @@ namespace HR_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbJoinDate;
+
+        /// <summary>
+        /// RequiredFieldValidatorJoinDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorJoinDate;
 
         /// <summary>
         /// empJoinDateEF control.
@@ -204,6 +303,15 @@ namespace HR_Management_System
         protected global::System.Web.UI.WebControls.Label lbDepName;
 
         /// <summary>
+        /// RequiredFieldValidatorDep control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorDep;
+
+        /// <summary>
         /// depNameEF control.
         /// </summary>
         /// <remarks>
@@ -222,6 +330,24 @@ namespace HR_Management_System
         protected global::System.Web.UI.WebControls.Label lbSalaryAmount;
 
         /// <summary>
+        /// RequiredFieldValidatorSalary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorSalary;
+
+        /// <summary>
+        /// RegularExpressionValidatorSalAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorSalAmount;
+
+        /// <summary>
         /// salaryAmountEF control.
         /// </summary>
         /// <remarks>
@@ -238,6 +364,15 @@ namespace HR_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbSalaryDesc;
+
+        /// <summary>
+        /// RequiredFieldValidatorSalaryDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorSalaryDesc;
 
         /// <summary>
         /// salaryDescEF control.

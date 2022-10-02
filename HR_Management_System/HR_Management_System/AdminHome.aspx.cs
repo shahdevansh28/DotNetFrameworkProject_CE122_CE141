@@ -14,8 +14,8 @@ namespace HR_Management_System
             if (Session["userName"] == null)
             {
                 Response.Redirect("Login.aspx", false);
-            }else{
-                Response.Write(Session["userName"]);
+            }else {
+                lbUserName.Text = "Welcome " + Session["userName"].ToString();
             }
         }
 
